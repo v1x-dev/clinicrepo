@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Mehra's Clinic | General & Family Medicine | Meerut</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0D7377;
+    --teal-light: #14BDBD;
+    --teal-pale: #E8F6F6;
+    --navy: #0A2342;
+    --cream: #F8FFFE;
+    --gray: #6B7280;
+    --red: #EF4444;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: white; box-shadow: 0 1px 20px rgba(0,0,0,0.08); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; }
+  .nav-logo-icon { width: 38px; height: 38px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
+  .nav-logo-text { font-weight: 800; font-size: 1.1rem; color: var(--navy); }
+  .nav-logo-text span { color: var(--teal); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: #555; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-actions { display: flex; gap: 0.8rem; align-items: center; }
+  .nav-emergency { background: #FEF2F2; color: var(--red); border: 1px solid #FECACA; padding: 0.45rem 1rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; }
+  .nav-book { background: var(--teal); color: white; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: background 0.3s; }
+  .nav-book:hover { background: #0a5f63; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; padding: 90px 5% 4rem; gap: 4rem; background: linear-gradient(160deg, var(--teal-pale) 0%, white 60%); position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(13,115,119,0.08), transparent 70%); }
+  .hero-left { position: relative; z-index: 2; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal); color: white; padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; }
+  .hero h1 .teal { color: var(--teal); }
+  .hero-desc { color: var(--gray); line-height: 1.8; margin-bottom: 2rem; font-size: 1rem; }
+  .hero-timing { display: flex; align-items: center; gap: 0.8rem; background: white; border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 2px 15px rgba(0,0,0,0.06); width: fit-content; border-left: 4px solid var(--teal); }
+  .timing-dot { width: 10px; height: 10px; background: #10B981; border-radius: 50%; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .timing-text { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+  .timing-text span { color: var(--gray); font-weight: 400; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: white; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(13,115,119,0.35); }
+  .btn-primary:hover { background: #0a5f63; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid var(--teal); color: var(--teal); padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; }
+  .btn-outline:hover { background: var(--teal); color: white; }
+
+  /* HERO IMAGE */
+  .hero-right { position: relative; z-index: 2; }
+  .hero-img-wrap { position: relative; }
+  .hero-img-wrap img { width: 100%; height: 480px; object-fit: cover; object-position: top; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .experience-badge { position: absolute; bottom: 2rem; left: -2rem; background: var(--teal); color: white; padding: 1.2rem 1.5rem; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(13,115,119,0.4); }
+  .experience-badge .num { font-size: 2.2rem; font-weight: 800; display: block; }
+  .experience-badge .label { font-size: 0.75rem; opacity: 0.8; }
+  .rating-badge { position: absolute; top: 2rem; right: -1.5rem; background: white; padding: 1rem 1.3rem; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); text-align: center; }
+  .rating-num { font-size: 1.6rem; font-weight: 800; color: var(--navy); display: block; }
+  .rating-stars { color: #F59E0B; font-size: 0.9rem; }
+  .rating-label { font-size: 0.7rem; color: var(--gray); margin-top: 0.2rem; }
+
+  /* QUICK STATS */
+  .quick-stats { background: var(--teal); padding: 2.5rem 5%; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center; }
+  .qstat-num { font-size: 2rem; font-weight: 800; color: white; display: block; }
+  .qstat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+  /* SECTIONS */
+  section { padding: 5.5rem 5%; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.8rem; }
+  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; line-height: 1.2; }
+  .section-title em { color: var(--teal); font-style: normal; }
+
+  /* SERVICES */
+  .services { background: white; }
+  .services-header { text-align: center; margin-bottom: 3.5rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; max-width: 1200px; margin: 0 auto; }
+  .service-card { background: var(--cream); border-radius: 14px; padding: 1.8rem; border: 2px solid transparent; transition: all 0.3s; display: flex; gap: 1.2rem; align-items: flex-start; }
+  .service-card:hover { border-color: var(--teal); background: var(--teal-pale); transform: translateY(-3px); }
+  .service-icon { width: 52px; height: 52px; background: var(--teal-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; border: 2px solid rgba(13,115,119,0.1); }
+  .service-card:hover .service-icon { background: var(--teal); }
+  .service-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .service-content p { color: var(--gray); font-size: 0.83rem; line-height: 1.6; }
+
+  /* ABOUT DOCTOR */
+  .about-doc { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .about-img img { width: 100%; height: 500px; object-fit: cover; object-position: top; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); }
+  .about-text .section-title { margin-bottom: 0.5rem; }
+  .doctor-title { font-family: 'Crimson Pro', serif; font-size: 1.2rem; color: var(--teal); font-style: italic; margin-bottom: 1.2rem; }
+  .about-text p { color: var(--gray); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+  .credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+  .cred-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; font-weight: 600; }
+  .cred-icon { width: 30px; height: 30px; background: var(--teal-pale); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .book-appointment { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal); color: white; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none; margin-top: 1.8rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(13,115,119,0.3); }
+  .book-appointment:hover { background: #0a5f63; transform: translateY(-2px); }
+
+  /* TIMINGS */
+  .timings { background: var(--navy); }
+  .timings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .timings-text .section-label { color: var(--teal-light); }
+  .timings-text .section-title { color: white; margin-bottom: 1.5rem; }
+  .timings-table { background: rgba(255,255,255,0.05); border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+  .timing-row { display: grid; grid-template-columns: 1fr 1fr 80px; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .timing-row:last-child { border-bottom: none; }
+  .timing-row.header { background: rgba(13,115,119,0.3); }
+  .timing-row .day { color: rgba(255,255,255,0.7); font-size: 0.88rem; font-weight: 500; }
+  .timing-row .time { color: white; font-size: 0.88rem; font-weight: 600; }
+  .timing-row.header .day, .timing-row.header .time { color: rgba(255,255,255,0.5); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .open-badge { background: rgba(16,185,129,0.2); color: #10B981; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; }
+  .closed-badge { background: rgba(239,68,68,0.2); color: #F87171; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; }
+  .timings-contact { margin-top: 2rem; }
+  .contact-pill { display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.06); border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); font-size: 0.88rem; }
+  .contact-pill strong { color: white; font-weight: 700; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: white; }
+  .test-header { text-align: center; margin-bottom: 3.5rem; }
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+  .test-card { background: var(--cream); border-radius: 16px; padding: 1.8rem; border: 1px solid #E5F0F0; }
+  .test-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+  .t-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+  .t-name { font-weight: 700; font-size: 0.95rem; }
+  .t-stars { color: #F59E0B; font-size: 0.85rem; }
+  .t-tag { display: inline-block; background: var(--teal-pale); color: var(--teal); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 20px; margin-top: 0.3rem; }
+  .t-text { color: #555; font-size: 0.88rem; line-height: 1.7; font-style: italic; }
+
+  /* BOOK */
+  .book { background: var(--cream); }
+  .book-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .book-info .section-title { margin-bottom: 1.2rem; }
+  .book-info p { color: var(--gray); line-height: 1.8; margin-bottom: 2rem; }
+  .emergency-box { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .emergency-box h4 { color: var(--red); font-weight: 700; margin-bottom: 0.5rem; }
+  .emergency-box p { color: #7F1D1D; font-size: 0.88rem; margin-bottom: 0 }
+  .emergency-box a { color: var(--red); font-weight: 700; text-decoration: none; display: block; font-size: 1.1rem; margin-top: 0.5rem; }
+  .info-items { display: flex; flex-direction: column; gap: 1rem; }
+  .info-item { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .info-icon { width: 38px; height: 38px; background: var(--teal-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .info-text strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
+  .info-text span { color: var(--gray); font-size: 0.83rem; }
+  .form-card { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 30px rgba(0,0,0,0.07); }
+  .form-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 700; margin-bottom: 0.4rem; color: #374151; text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border 0.3s; }
+  .form-group input:focus, .form-group select:focus { border-color: var(--teal); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit { width: 100%; background: var(--teal); color: white; border: none; padding: 1rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.3s; }
+  .form-submit:hover { background: #0a5f63; }
+
+  /* WHATSAPP */
+  .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5);} 50%{box-shadow:0 4px 40px rgba(37,211,102,0.8);} }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 2rem 5%; text-align: center; font-size: 0.82rem; }
+  footer strong { color: var(--teal-light); }
+
+  @media (max-width: 768px) {
+    .hero, .about-grid, .timings-grid, .book-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .nav-links { display: none; }
+    .experience-badge { left: 0; bottom: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">⚕️</div>
+    <div class="nav-logo-text">Dr. <span>Mehra's</span> Clinic</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About Doctor</a></li>
+    <li><a href="#timings">Timings</a></li>
+    <li><a href="#book">Book Appointment</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="tel:+919999999999" class="nav-emergency">🚨 Emergency</a>
+    <a href="https://wa.me/919999999999" class="nav-book">Book Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-badge">✅ 15+ Years Experience • MBBS, MD (Delhi)</div>
+    <h1>Trusted Family Doctor in <span class="teal">Meerut</span> — Expert Care for All Ages</h1>
+    <p class="hero-desc">Dr. Anita Mehra provides compassionate, evidence-based medical care for the whole family — from children to seniors. General medicine, preventive care, and chronic disease management under one roof.</p>
+    <div class="hero-timing">
+      <div class="timing-dot"></div>
+      <div class="timing-text">Clinic Open Today: <span>9:00 AM – 1:00 PM & 5:00 PM – 8:30 PM</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/919999999999" class="btn-primary">📲 Book via WhatsApp</a>
+      <a href="tel:+919999999999" class="btn-outline">📞 Call Now</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80" alt="Dr. Mehra">
+      <div class="experience-badge"><span class="num">15+</span><span class="label">Years of Practice</span></div>
+      <div class="rating-badge"><span class="rating-num">4.9</span><div class="rating-stars">★★★★★</div><div class="rating-label">500+ Reviews</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<div class="quick-stats">
+  <div class="stats-row">
+    <div><span class="qstat-num">10,000+</span><span class="qstat-label">Patients Treated</span></div>
+    <div><span class="qstat-num">15+</span><span class="qstat-label">Years Experience</span></div>
+    <div><span class="qstat-num">4.9★</span><span class="qstat-label">Patient Rating</span></div>
+    <div><span class="qstat-num">6 Days</span><span class="qstat-label">Weekly Availability</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="section-label">What We Treat</div>
+    <h2 class="section-title">Comprehensive <em>Medical Services</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🤒</div><div class="service-content"><h3>Fever & Infections</h3><p>Diagnosis and treatment of viral/bacterial infections, typhoid, dengue, malaria, and seasonal flu.</p></div></div>
+    <div class="service-card"><div class="service-icon">❤️</div><div class="service-content"><h3>Heart & BP Management</h3><p>Hypertension monitoring, cardiac risk assessment, and long-term blood pressure management.</p></div></div>
+    <div class="service-card"><div class="service-icon">🩸</div><div class="service-content"><h3>Diabetes Care</h3><p>Type 1 & 2 diabetes management, HbA1c monitoring, diet counselling, and medication management.</p></div></div>
+    <div class="service-card"><div class="service-icon">🧒</div><div class="service-content"><h3>Child Health (Paediatrics)</h3><p>Growth monitoring, vaccinations, common childhood illnesses, and nutritional guidance for kids.</p></div></div>
+    <div class="service-card"><div class="service-icon">👩</div><div class="service-content"><h3>Women's Health</h3><p>Thyroid disorders, anaemia, hormonal issues, PCOS management, and preventive screening.</p></div></div>
+    <div class="service-card"><div class="service-icon">🏥</div><div class="service-content"><h3>Preventive Health Checkups</h3><p>Annual health packages, pre-employment checkups, lab test referrals, and health counselling.</p></div></div>
+    <div class="service-card"><div class="service-icon">🦴</div><div class="service-content"><h3>Joint Pain & Arthritis</h3><p>Pain management, physiotherapy referrals, and long-term arthritis care for elderly patients.</p></div></div>
+    <div class="service-card"><div class="service-icon">🧠</div><div class="service-content"><h3>Stress & Sleep Disorders</h3><p>Anxiety, insomnia, and stress-related issues with holistic counselling and medical support.</p></div></div>
+    <div class="service-card"><div class="service-icon">💊</div><div class="service-content"><h3>Chronic Disease Management</h3><p>Long-term management of asthma, thyroid, kidney conditions, and other chronic health issues.</p></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-doc" id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=700&q=80" alt="Dr. Anita Mehra">
+    </div>
+    <div class="about-text">
+      <div class="section-label">About the Doctor</div>
+      <h2 class="section-title">Dr. Anita <em>Mehra</em></h2>
+      <div class="doctor-title">MBBS (Delhi), MD — General Medicine, PGIMER</div>
+      <p>With over 15 years of practice in Meerut, Dr. Anita Mehra is one of the region's most respected and trusted family physicians. She combines modern evidence-based medicine with a warm, patient-centered approach.</p>
+      <p>She completed her MBBS from Delhi and MD from PGIMER Chandigarh, bringing top-tier medical education to local families. Her expertise spans general medicine, preventive care, and management of complex chronic conditions.</p>
+      <div class="credentials">
+        <div class="cred-item"><div class="cred-icon">🎓</div>MBBS — Delhi University</div>
+        <div class="cred-item"><div class="cred-icon">🏥</div>MD — PGIMER Chandigarh</div>
+        <div class="cred-item"><div class="cred-icon">📋</div>Registered — MCI Delhi</div>
+        <div class="cred-item"><div class="cred-icon">🌐</div>Hindi + English Consultations</div>
+        <div class="cred-item"><div class="cred-icon">⭐</div>4.9/5 Patient Rating</div>
+        <div class="cred-item"><div class="cred-icon">🏆</div>Best Doctor Award 2023</div>
+      </div>
+      <a href="https://wa.me/919999999999" class="book-appointment">📲 Book Appointment on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIMINGS -->
+<section class="timings" id="timings">
+  <div class="timings-grid">
+    <div class="timings-text">
+      <div class="section-label">Clinic Schedule</div>
+      <h2 class="section-title" style="color:white">Clinic <em style="color:var(--teal-light)">Timings</em></h2>
+      <p style="color:rgba(255,255,255,0.6);line-height:1.8;margin:1rem 0 2rem">Walk-ins welcome during clinic hours. For guaranteed appointment with no waiting, book via WhatsApp in advance.</p>
+      <div class="timings-contact">
+        <div class="contact-pill">📞 <span><strong>+91 99999 99999</strong> — Call or WhatsApp</span></div>
+        <div class="contact-pill">📍 <span>12 Shastri Nagar, Near Civil Hospital, Meerut</span></div>
+        <div class="contact-pill">🚨 <span><strong>Emergency:</strong> Available 24/7 on call</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="timings-table">
+        <div class="timing-row header"><span class="day">Day</span><span class="time">Timings</span><span></span></div>
+        <div class="timing-row"><span class="day">Monday – Friday</span><span class="time">9AM–1PM & 5–8:30PM</span><span class="open-badge">Open</span></div>
+        <div class="timing-row"><span class="day">Saturday</span><span class="time">9AM–2PM & 5–7PM</span><span class="open-badge">Open</span></div>
+        <div class="timing-row"><span class="day">Sunday</span><span class="time">10AM–12PM only</span><span class="open-badge">Limited</span></div>
+        <div class="timing-row" style="background:rgba(239,68,68,0.05)"><span class="day">National Holidays</span><span class="time">—</span><span class="closed-badge">Closed</span></div>
+      </div>
+      <div style="background:rgba(13,115,119,0.2);border-radius:12px;padding:1.2rem 1.5rem;margin-top:1rem;border:1px solid rgba(13,115,119,0.3)">
+        <p style="color:rgba(255,255,255,0.8);font-size:0.85rem;line-height:1.7">💡 <strong style="color:white">Tip:</strong> Book via WhatsApp to get a fixed slot — avoid waiting in queue. Patients with prior booking are seen first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-header">
+    <div class="section-label">Patient Reviews</div>
+    <h2 class="section-title">What Our <em>Patients Say</em></h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-top">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="t-avatar" alt="">
+        <div><div class="t-name">Ramesh Agarwal</div><div class="t-stars">★★★★★</div><span class="t-tag">Diabetes Patient</span></div>
+      </div>
+      <p class="t-text">"My diabetes was uncontrolled for years. Dr. Mehra changed my medication plan and gave detailed diet advice. In 3 months my HbA1c dropped from 9.2 to 6.8. Life-changing!"</p>
+    </div>
+    <div class="test-card">
+      <div class="test-top">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="t-avatar" alt="">
+        <div><div class="t-name">Sunita Sharma</div><div class="t-stars">★★★★★</div><span class="t-tag">Family Patient</span></div>
+      </div>
+      <p class="t-text">"Our entire family — 3 generations — comes to Dr. Mehra. She remembers every patient personally. Her diagnosis is always spot-on and she explains everything clearly."</p>
+    </div>
+    <div class="test-card">
+      <div class="test-top">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" class="t-avatar" alt="">
+        <div><div class="t-name">Vikash Kumar</div><div class="t-stars">★★★★★</div><span class="t-tag">Child's Father</span></div>
+      </div>
+      <p class="t-text">"My son had recurring fever. Other doctors couldn't figure it out. Dr. Mehra diagnosed typhoid in first visit. Very experienced and genuinely caring doctor. Highly recommend!"</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book">
+  <div class="book-grid">
+    <div class="book-info">
+      <div class="section-label">Appointments</div>
+      <h2 class="section-title">Book Your <em>Appointment</em></h2>
+      <p>Book a slot online and avoid the queue. Walk-ins are welcome but prior booking patients are seen first.</p>
+      <div class="emergency-box">
+        <h4>🚨 Medical Emergency?</h4>
+        <p>For urgent medical emergencies, call immediately:</p>
+        <a href="tel:+919999999999">📞 +91 99999 99999</a>
+      </div>
+      <div class="info-items">
+        <div class="info-item"><div class="info-icon">📍</div><div class="info-text"><strong>Location</strong><span>12 Shastri Nagar, Near Civil Hospital, Meerut - 250001</span></div></div>
+        <div class="info-item"><div class="info-icon">💰</div><div class="info-text"><strong>Consultation Fee</strong><span>₹200 (General) | ₹350 (Follow-up with tests)</span></div></div>
+        <div class="info-item"><div class="info-icon">🅿️</div><div class="info-text"><strong>Parking</strong><span>Free parking available near the clinic</span></div></div>
+        <div class="info-item"><div class="info-icon">💳</div><div class="info-text"><strong>Payment</strong><span>Cash, UPI (PhonePe/GPay), Cards accepted</span></div></div>
+      </div>
+    </div>
+    <div class="form-card">
+      <h3>Book Appointment</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Patient Name</label><input type="text" placeholder="Rahul Sharma"></div>
+        <div class="form-group"><label>Age</label><input type="number" placeholder="35"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+        <div class="form-group"><label>Preferred Date</label><input type="date"></div>
+      </div>
+      <div class="form-group"><label>Preferred Time Slot</label>
+        <select><option>Morning — 9AM to 1PM</option><option>Evening — 5PM to 8:30PM</option></select>
+      </div>
+      <div class="form-group"><label>Reason for Visit</label>
+        <select><option>General Consultation</option><option>Fever / Infection</option><option>Diabetes Management</option><option>Blood Pressure</option><option>Child's Health</option><option>Preventive Checkup</option><option>Other</option></select>
+      </div>
+      <button class="form-submit">📲 Confirm Appointment via WhatsApp</button>
+      <p style="text-align:center;margin-top:0.8rem;font-size:0.78rem;color:var(--gray)">You will receive a WhatsApp confirmation within 30 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="color:rgba(255,255,255,0.35);font-size:13px;">© all rights reserved <strong style="color:#ccff00">v1xmarketing</strong> </p>
+</footer>
+
+<a href="https://wa.me/919999999999" class="wa-float">💬</a>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='translateY(0)'; }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.service-card, .test-card').forEach(el => {
+    el.style.opacity=0; el.style.transform='translateY(25px)'; el.style.transition='all 0.5s ease'; observer.observe(el);
+  });
+</script>
+</body>
+</html>
